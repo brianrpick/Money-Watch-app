@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20161207040919) do
 
   create_table "expenses", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "name"
+    t.string   "exp_type"
     t.decimal  "ammount",     precision: 8, scale: 2
     t.datetime "date"
     t.string   "description"
@@ -27,14 +27,15 @@ ActiveRecord::Schema.define(version: 20161207040919) do
 
   create_table "transactions", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "name"
+    t.string   "location"
     t.decimal  "ammount",  precision: 8, scale: 2
     t.datetime "date"
     t.string   "category"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "email"
     t.string   "password_digest"
     t.decimal  "savings_goal",    precision: 8, scale: 2
