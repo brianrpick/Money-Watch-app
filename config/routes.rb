@@ -3,4 +3,8 @@ Rails.application.routes.draw do
   # creates restful routs for you (CRUD)
   resources :users, :expenses, :transactions
   get '/', to: 'users#home'
+  #routs for sessions
+  get "/login", to: "sessions#new"
+  post "/login", to: "sessions#create"
+  get "/logout", to: "sessions#destroy"
 end
