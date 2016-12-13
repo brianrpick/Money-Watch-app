@@ -13,6 +13,10 @@
 #
 
 class User < ApplicationRecord
+  has_secure_password
   has_many :transactions
   has_many :expenses
+  
+  validates :email, uniqueness: true
+  validates :name, presence: { message: "must be given please" }
 end
