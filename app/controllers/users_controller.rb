@@ -25,8 +25,8 @@ class UsersController < ApplicationController
       flash[:success] = 'Successfully created account!'
       redirect_to '/'
     else
-      flash[:warning] = 'Invalid email or password!'
-      redirect_to '/signup'
+      flash[:warning] = @item.errors.full_messages.join("<br>").html_safe
+      render :new
     end
   end
 end

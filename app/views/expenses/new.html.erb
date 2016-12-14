@@ -1,0 +1,24 @@
+<h1> New Expense!</h1>
+
+
+<%= form_tag '/expense', method: :post do %>
+  <div>
+    <%= label_tag :exp_type, "Expense Type"%>:
+    <%= text_field_tag :exp_type%>
+  </div>
+  <div>
+    <%= label_tag :ammount, "Product Name"%>:
+    <%= text_field_tag @item.name%>
+  </div>
+  <div>
+    <%= label_tag :date, "Date"%>:
+    <%= text_field_tag @item.description%>
+  </div>
+    <div>
+    <%= label_tag :description, "Descrption"%>:
+    <%= text_field_tag @item.price%>
+    </div>
+  <div>
+    <%= submit_tag "Submit" %>
+  </div>
+<%end%>
