@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:home, :new, :create]
   def home
     @page_heading = "Home Page"
     #spending goal
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
 
   def new
-    render 'new.html.erb'
+
   end
 
 

@@ -4,7 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  user_id     :integer
-#  name        :string
+#  exp_type    :string
 #  ammount     :decimal(8, 2)
 #  date        :datetime
 #  description :string

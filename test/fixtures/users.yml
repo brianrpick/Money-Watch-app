@@ -3,7 +3,8 @@
 # Table name: users
 #
 #  id              :integer          not null, primary key
-#  name            :string
+#  first_name      :string
+#  last_name       :string
 #  email           :string
 #  password_digest :string
 #  savings_goal    :decimal(8, 2)

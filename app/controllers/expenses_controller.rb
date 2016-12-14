@@ -1,12 +1,12 @@
 class ExpensesController < ApplicationController
   def create
-    @expense = Expense.create(
+    expense = Expense.create(
         exp_type: params[:exp_type],
         ammount: params[:ammount],
         date: params[:date],
         description: params[:description]
         )
-    if user.save
+    if expense.save
       flash[:success] = 'Successfully created expense!'
       redirect_to '/'
     else
