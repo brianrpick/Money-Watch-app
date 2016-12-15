@@ -51,4 +51,10 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  Plaid.config do |p|
+    p.client_id = '582bb3a0a753b9766d52bf3e'
+    p.secret = '264e1dc1bff8cafaabc8f580dd1b25'
+    p.env = :tartan  # or :production
+  end
+  
 end

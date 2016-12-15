@@ -1,15 +1,6 @@
 class UsersController < ApplicationController
-  def home
-    @page_heading = "Home Page"
-    #spending goal
-    @user = current_user
-  end 
-
-
   def new
-
   end
-
 
   def create
     @user = User.new(
@@ -27,5 +18,6 @@ class UsersController < ApplicationController
       flash[:warning] = @user.errors.full_messages.join("<br>").html_safe
       render :new
     end
+
   end
 end

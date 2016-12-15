@@ -1,3 +1,6 @@
 class TransactionsController < ApplicationController
-  efore_action :authenticate_user!, except: [:home, :new, :create]
+  before_action :authenticate_user!
+  def home
+    
+  end
 end

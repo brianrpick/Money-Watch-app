@@ -1,5 +1,5 @@
 class ExpensesController < ApplicationController
-  efore_action :authenticate_user!
+  before_action :authenticate_user!
   def create
     expense = Expense.create(
         exp_type: params[:exp_type],

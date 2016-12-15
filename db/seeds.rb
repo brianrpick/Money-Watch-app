@@ -33,3 +33,20 @@
 #   Expense.create(user_id: user_id, exp_type: type, ammount: ammtt, date: date, description: desc)
 # end
 
+# Category.create([
+#   {name: "Bank Fees"},
+#   {name: "Cash Advance"},
+#   {name: "Community"},
+#   {name: "Food and Drink"},
+#   {name: "Healthcare"},
+#   {name: "Bank Fees"},
+#   {name: "Interest"},
+#   {name: "Payment"},
+#   {name: "Recreation"},
+#   {name: "Service"},
+#   {name: "Shops"},
+#   {name: "Tax"},
+#   {name: "Travel"},
+# ])
+
+
