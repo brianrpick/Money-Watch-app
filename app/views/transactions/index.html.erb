@@ -1,0 +1,6 @@
+<%=@user_t.initial_transactions%>
+<%@user_t.initial_transactions.each do |trans|%>
+  <%= link_to "#{trans.name}", "/transactions/#{:id}" %>
+  <%=trans.amount%>
+  <%=trans.date.to_date%><br>
+<%end%>
