@@ -1,5 +1,11 @@
-<%=@user_t.initial_transactions%>
-<%@user_t.initial_transactions.each do |trans|%>
+Here are your most recent purchases<br>
+<%@positive.each do |trans|%>
+  <%= link_to "#{trans.name}", "/transactions/#{:id}" %>
+  <%=trans.amount%>
+  <%=trans.date.to_date%><br>
+<%end%>
+Here are the most recent credits to your account<br>
+<%@negative.each do |trans|%>
   <%= link_to "#{trans.name}", "/transactions/#{:id}" %>
   <%=trans.amount%>
   <%=trans.date.to_date%><br>
