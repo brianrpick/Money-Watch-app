@@ -11,7 +11,6 @@ class TransactionsController < ApplicationController
         @negative << trans
       end
     end
-
   end
   def show
 

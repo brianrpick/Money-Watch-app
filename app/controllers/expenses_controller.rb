@@ -4,7 +4,7 @@ class ExpensesController < ApplicationController
     @expense = Expense.create(
         user_id: params[:user_id],
         exp_type: params[:exp_type],
-        ammount: params[:ammount],
+        amount: params[:amount],
         date: params[:date],
         description: params[:description]
         )
@@ -18,7 +18,7 @@ class ExpensesController < ApplicationController
   end
 
   def index
-    @expenses = Expense.all.where(user_id: session[:id])
+    @expenses = Expense.all.where(user_id: @current_user.id)
   end
 
   def edit
@@ -28,7 +28,7 @@ class ExpensesController < ApplicationController
   def update
     expense = Expense.update_all(
       exp_type: params[:exp_type],
-      ammount: params[:ammount],
+      amount: params[:amount],
       date: params[:date],
       description: params[:description]
       )
