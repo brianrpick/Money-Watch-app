@@ -1,0 +1,6 @@
+<%@expenses.each do |exp|%>
+  <%= link_to "#{exp.exp_type}", "/expenses/#{:id}" %>
+  Ammount: <%=number_to_currency(exp.amount)%>
+  Day of the month: <%=exp.date%>
+  Description: <%=exp.description%><br>
+<%end%>

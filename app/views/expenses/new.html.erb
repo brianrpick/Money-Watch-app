@@ -1,24 +1,23 @@
 <h1> New Expense!</h1>
-
-
-<%= form_tag '/expense', method: :post do %>
+<%= form_tag '/expenses', method: :post do %>
   <div>
     <%= label_tag :exp_type, "Expense Type"%>:
     <%= text_field_tag :exp_type%>
   </div>
   <div>
-    <%= label_tag :ammount, "Product Name"%>:
+    <%= label_tag :ammount, "Amount"%>:
     <%= text_field_tag :ammount%>
   </div>
   <div>
-    <%= label_tag :date, "Date"%>:
-    <%= text_field_tag :date%>
+    <%= label_tag :date, "Day of the Month:"%>:
+    <%= select_tag :date, options_for_select(1..31) %>
   </div>
     <div>
     <%= label_tag :description, "Descrption"%>:
     <%= text_field_tag :description%>
     </div>
+    <%= hidden_field_tag :user_id, current_user.id%>
   <div>
-    <%= submit_tag "Submit" %>
+    <%= submit_tag %>
   </div>
 <%end%>

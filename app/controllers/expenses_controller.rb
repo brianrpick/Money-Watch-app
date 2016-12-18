@@ -1,20 +1,26 @@
 class ExpensesController < ApplicationController
   before_action :authenticate_user!
   def create
-    expense = Expense.create(
+    @expense = Expense.create(
+        user_id: params[:user_id],
         exp_type: params[:exp_type],
         ammount: params[:ammount],
         date: params[:date],
         description: params[:description]
         )
-    if expense.save
+    if @expense.save
       flash[:success] = 'Successfully created expense!'
-      redirect_to '/'
+      redirect_to '/expenses'
     else
       flash[:warning] = @expense.errors.full_messages.join("<br>").html_safe
-      render :expense
+      render :expenses 
     end
   end
+
+  def index
+    @expenses = Expense.all.where(user_id: session[:id])
+  end
+
   def edit
     @expense = Expense.find(params[:id])
   end
