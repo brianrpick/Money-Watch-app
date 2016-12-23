@@ -1,6 +1,8 @@
-<%=@expenses.each do |exp|%>
-  <%= link_to "#{exp.exp_type}", "/expenses/#{:id}/edit" %>
-  Amount: <%=number_to_currency(exp.amount)%>
-  Day of the month: <%=exp.date%>
-  Description: <%=exp.description%><br>
+<%@expenses.each do |exp|%>
+<div class="ibox-content">
+  <%= link_to "#{exp.description}", "/expenses/#{exp.id}/edit" %></br>
+  Amount: <%=number_to_currency(exp.amount)%></br>
+  Day of the month: <%=exp.date%></br>
+  
+</div>
 <%end%>

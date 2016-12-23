@@ -26,15 +26,16 @@ class ExpensesController < ApplicationController
   end
 
   def update
-    expense = Expense.update_all(
+    @expense = Expense.find(params[:id])
+    @expense.assign_attributes(
       exp_type: params[:exp_type],
       amount: params[:amount],
       date: params[:date],
       description: params[:description]
       )
-    if expense.save
-      flash[:success] = 'Successfully created account!'
-      redirect_to '/'
+    if @expense.save
+      flash[:success] = 'Expense Successfully Updated'
+      redirect_to '/expenses'
     else
       flash[:warning] = @expense.errors.full_messages.join("<br>").html_safe
       render :new

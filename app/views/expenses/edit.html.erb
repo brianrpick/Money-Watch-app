@@ -1,23 +1,20 @@
 <h1> Edit Expense</h1>
-<%= form_tag '/expenses', method: :post do %>
-  <div>
-    <%= label_tag :exp_type, "Expense Type"%>:
-    <%= text_field_tag :exp_type, @expense.exp_type%>
-  </div>
+<div class="ibox-content">
+<%= form_tag "/expenses/#{@expense.id}", method: :patch, :class => "form-group" do %>
   <div>
     <%= label_tag :amount, "Amount"%>:
-    <%= text_field_tag :ammunt, @expense.amount%>
+    <%= text_field_tag :amount, @expense.amount%>
   </div>
   <div>
     <%= label_tag :date, "Day of the Month:"%>:
     <%= select_tag :date, options_for_select(1..31, @expense.date) %>
   </div>
-    <div>
+  <div>
     <%= label_tag :description, "Descrption"%>:
     <%= text_field_tag :description, @expense.description%>
-    </div>
-    <%= hidden_field_tag :user_id, current_user.id%>
-  <div>
-    <%= submit_tag %>
   </div>
+  <div>
+    <%= submit_tag "Submit", class: "btn btn-primary block full-width m-b"%>
+  </div>
+</div>
 <%end%>
