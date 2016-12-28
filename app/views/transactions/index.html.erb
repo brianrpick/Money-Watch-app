@@ -1,22 +1,43 @@
-Here are your most recent purchases<br>
+<h3>Here are your most recent deductions:</h3>
 
 <%@positive.each do |trans|%>
-  <%= link_to "#{trans.name}", "/transactions/#{:id}" %>
+<div class="ibox-content">
+  <%= link_to "#{trans.name}", "/transactions/#{trans.id}/edit" %>
   <%=number_to_currency(trans.amount)%>
   <%=trans.date.to_date%><br>
   <%=trans.id%>
   <%=trans.category_id%>
   <%@p_total += trans.amount%>
+</div>
 <%end%>
-Here is the total of your purchases
-<%=p_total%>
+<h4>Total of your purchases: <%=number_to_currency(@p_total)%></h4>
 
-Here are the most recent credits to your account<br>
+<h3>Here are the most recent credits to your account</h3>
 <%@negative.each do |trans|%>
-  <%=link_to "#{trans.name}", "/transactions/#{:id}" %>
+<div class="ibox-content">
+  <%=link_to "#{trans.name}", "/transactions/#{trans.id}/edit" %>
   <%=number_to_currency(trans.amount)%>
   <%=trans.date.to_date%><br>
-  <%n_total += trans.total%>
+  <%=@n_total += trans.amount%>
+</div>
 <%end%>
-Here is the total of the credits
-<%=number_to_currency(n_total)
+<h4>Total of your credits: <%=(number_to_currency(@n_total.abs))%></h4>
+</br>
+</br>
+</br>
+</br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
