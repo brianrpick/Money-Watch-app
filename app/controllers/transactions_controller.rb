@@ -7,14 +7,13 @@ class TransactionsController < ApplicationController
     @n_total = 0
     @user_t = Plaid::User.create(:connect, 'wells', 'plaid_test', 'plaid_good')
     @user_t.initial_transactions.each do |trans|
-      save_t = Transaction.find_or_create_by(plaid_id: trans.id)
-      if !save_t.amount 
-        save_t.amount = trans.amount
-        save_t.category_id = trans.category_id
-        save_t.date = trans.date
-        save_t.plaid_id = trans.id
-        save_t.user_id = @current_user.id
-        save_t.location = trans.name
+      if !Transaction.find_by(plaid_id: trans.id) 
+        Transaction.create(user_id: current_user.id, 
+                           category_id: trans.category_id, 
+                           location: trans.name, 
+                           amount: trans.amount,
+                           date: trans.date,
+                           plaid_id: trans.id)
         if trans.amount > 0
           @positive << trans
         else 
@@ -32,11 +31,11 @@ class TransactionsController < ApplicationController
 
 
   def edit
-    @transaction = transaction.find(params[:id])
+    @transaction = Transaction.find(params[:id])
   end
 
   def update
-    @transaction = transaction.find(params[:id])
+    @transaction = Transaction.find(params[:id])
     @transaction.assign_attributes(
       exp_type: params[:exp_type],
       amount: params[:amount],
