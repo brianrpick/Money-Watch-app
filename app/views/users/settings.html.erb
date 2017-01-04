@@ -1,0 +1,37 @@
+<h2>Welcome <%=@user.first_name%> </h2><form class="navbar-minimalize minimalize-styl-2 btn btn-primary" method="POST" action="/authenticate" ></form>
+
+<!-- To use Link with longtail institutions on Connect, set the
+data-longtail attribute to 'true'. See the Parameter Reference for
+additional documentation. -->
+<script
+  src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"
+  data-client-name="Client Name"
+  data-form-id="some-id"
+  data-key="test_key"
+  data-product="auth"
+  data-env="tartan">
+</script>
+
+
+<div class="ibox-content">
+<%= form_tag "/users/#{@user.id}", method: :patch, :class => "form-group" do %>
+  <div>
+    <%= label_tag :first_name, "First Name: "%>:
+    <%= text_field_tag :first_name, @user.first_name%>
+  </div>
+  <div>
+    <%= label_tag :last_name, "Last Name: "%>:
+    <%= text_field_tag :first_name, @user.last_name%>
+  </div>
+  <div>
+    <%= label_tag :savings_goal, "Savings Goal: "%>:
+    <%= text_field_tag :savings_goal, @user.savings_goal%>
+  </div>
+    <%= label_tag :expense_budget, "Expense Budget: "%>:
+    <%= text_field_tag :expense_budget, @user.expense_budget%>
+  </div>
+  <div>
+    <%= submit_tag "Submit", class: "btn btn-primary block full-width m-b"%>
+  </div>
+</div>
+<%end%>
