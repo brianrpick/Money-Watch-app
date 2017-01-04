@@ -41,4 +41,7 @@ class ExpensesController < ApplicationController
       render :new
     end
   end
+  def calendar
+    @expenses = Expense.all.where(user_id: @current_user.id)
+  end
 end

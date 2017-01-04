@@ -2,11 +2,9 @@
 
 <%@positive.each do |trans|%>
 <div class="ibox-content">
-  <%= link_to "#{trans.name}", "/transactions/#{trans.id}/edit" %>
-  <%=number_to_currency(trans.amount)%>
-  <%=trans.date.to_date%><br>
-  <%=trans.id%>
-  <%=trans.category_id%>
+  Location: <%= link_to "#{trans.name}", "/transactions/#{trans.id}/edit" %><br>
+  Amount: <%=number_to_currency(trans.amount)%><br>
+  Date: <%=trans.date.strftime("%d-%m-%y")%>
   <%@p_total += trans.amount%>
 </div>
 <%end%>
@@ -15,9 +13,9 @@
 <h3>Here are the most recent credits to your account</h3>
 <%@negative.each do |trans|%>
 <div class="ibox-content">
-  <%=link_to "#{trans.name}", "/transactions/#{trans.id}/edit" %>
-  <%=number_to_currency(trans.amount)%>
-  <%=trans.date.to_date%><br>
+  Location: <%=link_to "#{trans.name}", "/transactions/#{trans.id}/edit" %>
+  Amount: <%=number_to_currency(trans.amount)%>
+  Date: <%=trans.date.strftime("%d-%m-%y")%><br>
   <%=@n_total += trans.amount%>
 </div>
 <%end%>
@@ -26,18 +24,3 @@
 </br>
 </br>
 </br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

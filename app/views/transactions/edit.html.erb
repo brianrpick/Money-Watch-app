@@ -1,4 +1,4 @@
-<h1> Edit Expense</h1>
+<h1> Edit Transaction</h1>
 <div class="ibox-content">
 <%= form_tag "/transactions/#{@transaction.id}", method: :patch, :class => "form-group" do %>
   <div>
@@ -7,18 +7,14 @@
   </div>
   <div>
     <%= label_tag :date, "Day of the Month:"%>:
-    <%= select_tag :date, options_for_select(1..31, @expense.date) %>
+    <%= select_tag :date, options_for_select(1..31, @transaction.date) %>
   </div>
   <div>
-    <%= label_tag :description, "Descrption"%>:
-    <%= text_field_tag :description, @expense.description%>
-  </div>
-  <div>
-    <%= hidden_field_tag :category, @transaction.category%>
     <%= hidden_field_tag :location, @transaction.location%>
-    <%= hidden_field_tag :category_id, @category_id.category%>
-    <%= hidden_field_tag :plaid_id, @plaid_id.category%>
+    <%= hidden_field_tag :category_id, @transaction.category_id%>
+    <%= hidden_field_tag :plaid_id, @transaction.plaid_id%>
     <%= hidden_field_tag :user_id, @user_id%>
+    <%= hidden_field_tag :date, @transaction.date%>
   </div>
   <div>
     <%= submit_tag "Submit", class: "btn btn-primary block full-width m-b"%>
