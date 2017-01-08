@@ -40,4 +40,5 @@ class UsersController < ApplicationController
       render :settings
     end
   end
+
 end

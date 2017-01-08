@@ -12,5 +12,9 @@ Rails.application.routes.draw do
 
   get "/expenses/:id/calendar", to: "expenses#calendar"
 
-
+  namespace :api do
+    namespace :v1 do
+      resources :users
+    end
+  end
 end

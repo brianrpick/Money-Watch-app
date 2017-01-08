@@ -5,7 +5,7 @@ class TransactionsController < ApplicationController
     @negative = []
     @p_total = 0
     @n_total = 0
-    @user_t = Plaid::User.create(:connect, 'wells', 'plaid_test', 'plaid_good')
+    @user_t = Plaid::User.load(:connect, 'access_token')
     @user_t.initial_transactions.each do |trans|
       if !Transaction.find_by(plaid_id: trans.id) 
         Transaction.create(user_id: current_user.id, 

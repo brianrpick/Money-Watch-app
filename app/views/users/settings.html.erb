@@ -1,20 +1,24 @@
 <h2>Welcome, <%=@user.first_name%>! </h2><form id="some-id" method="POST" action="/authenticate" ></form>
 
-<!-- To use Link with longtail institutions on Connect, set the
-data-longtail attribute to 'true'. See the Parameter Reference for
-additional documentation. -->
 <button id="plaidLinkButton">Open Plaid Link</button>
 
 <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
 <script>
 var sandboxHandler = Plaid.create({
   env: 'tartan',
-  clientName: '<=%@user.first_name%>',
-  key: '<%ENV[PLAID_CLIENT_ID]%>',
-  product: 'connect',
+  clientName: 'Client Name',
+  key: 'test_key',
+  product: 'auth',
   onSuccess: function(public_token, metadata) {
     console.log(public_token, metadata);
-  },
+    $.ajax({
+      method: 'PATCH',
+      url: '<%= api_v1_user_path(current_user.id) %>',
+      data: {
+          public_token: public_token
+      }
+    });
+  }
 });
 
 document.getElementById('plaidLinkButton').onclick = function() {
