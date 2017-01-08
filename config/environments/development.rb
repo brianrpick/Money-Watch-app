@@ -52,8 +52,8 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   Plaid.config do |p|
-    p.client_id = 'PLAID_CLIENT_ID'
-    p.secret = 'PLAID_SECRET'
+    p.client_id = 'ENV[PLAID_CLIENT_ID]'
+    p.secret = 'ENV[PLAID_SECRET]'
     p.env = :tartan  # or :production
   end
   
