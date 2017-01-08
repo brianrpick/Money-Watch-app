@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161228033721) do
+ActiveRecord::Schema.define(version: 20170108212114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20161228033721) do
     t.decimal  "expense_budget",  precision: 8, scale: 2
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
+    t.string   "plaid_token"
   end
 
 end

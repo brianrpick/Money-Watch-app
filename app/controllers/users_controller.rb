@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:success] = 'Successfully created account!'
-      redirect_to '/'
+      redirect_to '/settings'
     else
       flash[:warning] = @user.errors.full_messages.join("<br>").html_safe
       render :new
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       expense_budget: params[:expense_budget]
       )
     if @user.save
-      flash[:success] = 'User Info Updated'
+      flash[:success] = 'Your info has been updated!'
       redirect_to '/transactions'
     else
       flash[:warning] = @user.errors.full_messages.join("<br>").html_safe
