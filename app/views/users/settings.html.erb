@@ -10,7 +10,7 @@ additional documentation. -->
 var sandboxHandler = Plaid.create({
   env: 'tartan',
   clientName: '<=%@user.first_name%>',
-  key: '0172ac1d0ac59010c471ca20d039d3',
+  key: 'PLAID_CLIENT_ID',
   product: 'connect',
   onSuccess: function(public_token, metadata) {
     console.log(public_token, metadata);
