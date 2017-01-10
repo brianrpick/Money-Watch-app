@@ -5,7 +5,13 @@ class TransactionsController < ApplicationController
     @negative = []
     @p_total = 0
     @n_total = 0
-    @user_t = Plaid::User.load(:connect, 'access_token')
+    @mw_user = current_user
+    if !@mw_user.added_plaid
+      @user = Plaid::User.exchange_token("#{@mw_user.plaid_token}")
+      @mw_user.assign_attributes(plaid_token: @user.access_token)
+      @mw_user.assign_attribute(added_plaid: true)
+    end
+    @user_t = User.load(:auth, "#{@mw_user.plaid_token}")
     @user_t.initial_transactions.each do |trans|
       if !Transaction.find_by(plaid_id: trans.id) 
         Transaction.create(user_id: current_user.id, 

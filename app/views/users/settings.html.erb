@@ -4,11 +4,14 @@
 
 <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
 <script>
+window.onload = function(){
+  console.log('<%="#{ENV['PLAID_PUBLIC']}"%>');
+};
 var sandboxHandler = Plaid.create({
   env: 'tartan',
-  clientName: 'Client Name',
-  key: 'test_key',
-  product: 'auth',
+  clientName: 'Money Watch',
+  key: '0172ac1d0ac59010c471ca20d039d3',
+  product: 'connect',
   onSuccess: function(public_token, metadata) {
     console.log(public_token, metadata);
     $.ajax({

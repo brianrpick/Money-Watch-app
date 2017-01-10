@@ -42,7 +42,7 @@ group :development, :test do
   gem "binding_of_caller"
   gem 'annotate'
   gem 'faker'
-  gem 'dotenv'
+  gem 'dotenv-rails' 
 end
 
 group :development do
