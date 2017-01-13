@@ -1,5 +1,9 @@
 class TransactionsController < ApplicationController
   before_action :authenticate_user!
+
+  def home
+    
+  end
   def index
     @positive = []
     @negative = []
@@ -8,11 +12,11 @@ class TransactionsController < ApplicationController
     @mw_user = current_user
     if !@mw_user.added_plaid
       @user = Plaid::User.exchange_token("#{@mw_user.plaid_token}")
-      @mw_user.assign_attributes(plaid_token: @user.access_token)
-      @mw_user.assign_attribute(added_plaid: true)
+      @mw_user.assign_attributes(plaid_token: @user.access_token, added_plaid: true)
     end
-    @user_t = User.load(:auth, "#{@mw_user.plaid_token}")
-    @user_t.initial_transactions.each do |trans|
+    @user = Plaid::User.load(:connect, "#{@mw_user.plaid_token}")
+    @user_t = @user.transactions
+    @user_t.each do |trans|
       if !Transaction.find_by(plaid_id: trans.id) 
         Transaction.create(user_id: current_user.id, 
                            category_id: trans.category_id, 
