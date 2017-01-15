@@ -1,0 +1,43 @@
+<script src="/js/plugins/chartjs/Chart.min.js"></script>
+<script>
+    $(function () {
+
+        console.log("chart js is running");
+
+        var ctx = document.getElementById("lineChart");
+        new Chart(ctx, {
+            type: 'line', 
+            data: {
+                labels: ["January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"],
+                datasets: [
+                    {
+                        label: "Data 2",
+                        backgroundColor: 'rgba(26,179,148,0.5)',
+                        borderColor: "rgba(26,179,148,0.7)",
+                        pointBackgroundColor: "rgba(26,179,148,1)",
+                        pointBorderColor: "#fff",
+                        data: [gon.total[0], gon.total[1], gon.total[2], gon.total[3], gon.total[4], gon.total[5], gon.total[6], gon.total[7], gon.total[8], gon.total[9],gon.total[10],gon.total[11]]
+                    }
+                ]
+            },
+            options: {responsive: true}
+        });
+    });
+</script>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Line Chart Example
+                    <small>With custom colors.</small>
+                </h5>
+            </div>
+            <div class="ibox-content">
+                <div>
+                    <canvas id="lineChart" height="140"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
