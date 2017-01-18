@@ -73,6 +73,11 @@
                         <li><a href="/graph_sparkline.html">Sparkline Charts</a></li>
                     </ul>
                 </li>
+                <%if current_user.grab_other != nil%>
+                    <li>
+                        <a href="/other"><i class="fa fa-check"></i> <span class="nav-label">Update Categories</span>  <span class="pull-right label label-primary">Help Us!</span></a>
+                    </li>
+                <%end%>
             </ul>
 
         </div>

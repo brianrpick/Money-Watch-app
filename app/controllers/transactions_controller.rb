@@ -15,7 +15,7 @@ class TransactionsController < ApplicationController
     @user_t = @user.transactions
     @user_t.each do |trans|
       if !Transaction.find_by(plaid_id: trans.id) 
-        Transaction.create(user_id: current_user.id, 
+        Transaction.create(user_id: current_user.id,                             
                            category_id: trans.category_id, 
                            location: trans.name, 
                            amount: trans.amount,
@@ -34,6 +34,7 @@ class TransactionsController < ApplicationController
         end
       end
     end
+    @user_t = current_user.transactions.where(date: Time.now - 1.month..Time.now)
   end
 
 
@@ -42,16 +43,20 @@ class TransactionsController < ApplicationController
   end
 
   def update
-    @transaction = Transaction.find_by(params[:plaid_id])
+    @transaction = Transaction.find(params[:id])
     @transaction.assign_attributes(user_id: current_user.id, 
-                                   category_id: @transaction.category_id, 
-                                   location: @transaction.name, 
-                                   amount: @transaction.amount,
+                                   category_id: params[:category_id], 
+                                   location: @transaction.location, 
+                                   amount: params[:amount],
                                    date: @transaction.date,
-                                   plaid_id: @transaction.id)
+                                   plaid_id: @transaction.plaid_id)
     if @transaction.save
       flash[:success] = 'Transaction Successfully Updated'
-      redirect_to '/transactions'
+      if current_user.grab_other == nil
+        redirect_to '/transactions'
+      else
+        redirect_to '/other'    
+      end
     else
       flash[:warning] = @transaction.errors.full_messages.join("<br>").html_safe
       render :index
@@ -59,7 +64,15 @@ class TransactionsController < ApplicationController
   end
 
   def home
+    gon.categories = @cate_totals
     @totals = []
+    total = 0
+    @totals.each do |num|
+      total += num
+    end
+    avg = total/12
+    
+    gon.avg = avg
     gon.total = @totals
     jan = 0
     feb = 0
@@ -117,6 +130,12 @@ class TransactionsController < ApplicationController
     @totals << oct
     @totals << nov
     @totals << dec
+
+    gon.categories = current_user.categorize_transactions
+    gon.category_totals = current_user.total_transactions
+  end
+  def other
+    @transactions = current_user.grab_other 
   end
 end
 

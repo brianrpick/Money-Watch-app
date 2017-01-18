@@ -6,6 +6,10 @@
     <%= text_field_tag :amount, @transaction.amount%>
   </div>
   <div>
+    <%= label_tag :category_id, "Category:"%>
+    <%= select_tag :category_id, options_for_select([["Bank Fees", "10"], ["Cash Advance","11"], ["Community","12"],["Food and Drink","13"], ["Healthcare","14"], ["Interest","15"], ["Payment","16"], ["Recreation","17"], ["Service","18"], ["Shops","19"], ["Tax","20"], ["Transfer","21"], ["Travel", "22"]])%>
+  </div>
+  <div>
     <%= label_tag :date, "Day of the Month:"%>:
     <%= select_tag :date, options_for_select(1..31, @transaction.date) %>
   </div>

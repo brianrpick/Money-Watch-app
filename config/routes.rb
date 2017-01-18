@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/settings', to: "users#settings"
 
   get '/home', to: "transactions#home"
-
+  get '/other', to: "transactions#other"
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"

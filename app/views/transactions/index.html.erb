@@ -4,7 +4,8 @@
 <div class="ibox-content">
   Location: <%= link_to "#{trans.name}", "/transactions/#{trans.id}/edit" %><br>
   Amount: <%=number_to_currency(trans.amount)%><br>
-  Date: <%=trans.date.strftime("%m-%d-%y")%>
+  Date: <%=trans.date%>
+  Category: <%=trans.find_category%>
   <%@p_total += trans.amount%>
 </div>
 <%end%>

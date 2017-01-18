@@ -1,43 +1,101 @@
+<h1>Welcome, <%=current_user.first_name%>
+
 <script src="/js/plugins/chartjs/Chart.min.js"></script>
 <script>
-    $(function () {
+  $(function () {
 
-        console.log("chart js is running");
+      var ctx = document.getElementById("lineChart");
+      new Chart(ctx, {
+        type: 'line', 
+        data: {
+            labels: ["January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"],
+            datasets: [
+                {
+                  label: "Money Spent",
+                  backgroundColor: 'rgba(26,179,148,0.5)',
+                  borderColor: "rgba(26,179,148,0.7)",
+                  pointBackgroundColor: "rgba(26,179,148,1)",
+                  pointBorderColor: "#fff",
+                  data: [gon.total[0], gon.total[1], gon.total[2], gon.total[3], gon.total[4], gon.total[5], gon.total[6], gon.total[7], gon.total[8], gon.total[9],gon.total[10],gon.total[11]]
+                }]
+        },
+        options: {responsive: true}
+      });
 
-        var ctx = document.getElementById("lineChart");
-        new Chart(ctx, {
-            type: 'line', 
-            data: {
-                labels: ["January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"],
-                datasets: [
-                    {
-                        label: "Data 2",
-                        backgroundColor: 'rgba(26,179,148,0.5)',
-                        borderColor: "rgba(26,179,148,0.7)",
-                        pointBackgroundColor: "rgba(26,179,148,1)",
-                        pointBorderColor: "#fff",
-                        data: [gon.total[0], gon.total[1], gon.total[2], gon.total[3], gon.total[4], gon.total[5], gon.total[6], gon.total[7], gon.total[8], gon.total[9],gon.total[10],gon.total[11]]
-                    }
-                ]
-            },
-            options: {responsive: true}
+        var ctx2 = document.getElementById("barChart");
+        new Chart(ctx2, {
+          type: 'bar', 
+          data: {
+              labels: ["Bank Fees", "Cash Advance", "Community", "Food and Drink", "Healthcare", "Interest", "Payments","Recreation", "Services", "Shops", "Tax", "Transfers", "Travel", "Other"],
+              datasets: [
+              {
+                  data: [gon.categories['Bank Fees'], gon.categories["Cash Advance"], gon.categories["Community"], gon.categories["Food and Drink"], gon.categories["Healthcare"], gon.categories["Interest"], gon.categories["Payments"], gon.categories["Recreation"], gon.categories["Service"], gon.categories["Shops"], gon.categories["Tax"], gon.categories["Transfer"], gon.categories["Travel"], gon.categories["Other"]],
+                  backgroundColor: ["#a3e1d4", "#dedede", "#b5b8cf","#a3e1d4", "#dedede", "#b5b8cf","#a3e1d4", "#dedede", "#b5b8cf","#a3e1d4", "#dedede", "#b5b8cf", "#a3e1d4"],
+                  label: ["Transactions in each Category"]
+              }]
+          }
         });
+        var doughnutData = {labels: ["Bank Fees", "Cash Advance", "Community", "Food and Drink", "Healthcare", "Interest", "Payments","Recreation", "Services", "Shops", "Tax", "Transfers", "Travel", "Other"],
+        datasets: [{
+            data: [gon.category_totals['Bank Fees'], gon.category_totals["Cash Advance"], gon.category_totals["Community"], gon.category_totals["Food and Drink"], gon.category_totals["Healthcare"], gon.category_totals["Interest"], gon.category_totals["Payments"], gon.category_totals["Recreation"], gon.category_totals["Service"], gon.category_totals["Shops"], gon.category_totals["Tax"], gon.category_totals["Transfer"], gon.category_totals["Travel"], gon.category_totals["Other"]],
+            backgroundColor: ["#a3e1d4", "#dedede", "#b5b8cf","#a3e1d4", "#dedede", "#b5b8cf","#a3e1d4", "#dedede", "#b5b8cf","#a3e1d4", "#dedede", "#b5b8cf", "#a3e1d4"]
+        }]
+        } ;
+
+
+        var doughnutOptions = {
+        responsive: true
+        };
+
+        // total_transactions
+        var ctx4 = document.getElementById("doughnutChart").getContext("2d");
+        new Chart(ctx4, {type: 'doughnut', data: doughnutData, options:doughnutOptions});
     });
 </script>
-
-<div class="row">
-    <div class="col-lg-8">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="col-lg-6">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>Line Chart Example
-                    <small>With custom colors.</small>
-                </h5>
+                <h5>Here is where you spent your money this month. </h5>
             </div>
             <div class="ibox-content">
                 <div>
-                    <canvas id="lineChart" height="140"></canvas>
+                    <canvas id="doughnutChart" height="140"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>We broke down the money you spent in the past year.</h5>
+            </div>
+            <div class="ibox-content">
+                <div>
+                    <canvas id="lineChart" height="180"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Here are your spending habits from the past year</h5>
+            </div>
+            <div class="ibox-content">
+                <div>
+                    <canvas id="barChart" height="140"></canvas>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+

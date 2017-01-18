@@ -1,0 +1,23 @@
+<h1> Update Category</h1>
+<h3> These transactions had no category when we recieved them, Help us be more accurate by setting them yourself.</h3>
+<%@transactions.each do |trans|%>
+
+<%= form_tag "/transactions/#{trans.id}", method: :patch, :class => "form-group" do %>
+<div class="ibox-content">
+  Transaction: <%= link_to "#{trans.location}", "/transactions/#{trans.id}/edit" %><br>
+  <%= label_tag :category_id, "Category:"%>
+  <%= select_tag :category_id, options_for_select([["Bank Fees", 10], ["Cash Advance", 11], ["Community", 12],["Food and Drink", 13], ["Healthcare", 14], ["Interest", 15], ["Payment", 16], ["Recreation", 17], ["Service", 18], ["Shops", 19], ["Tax", 20], ["Transfer", 21], ["Travel", 22]])%><br>
+    <%= label_tag :amount, "Amount"%>:
+    <%= text_field_tag :amount, trans.amount%>
+  <div>
+    <%= hidden_field_tag :location, trans.location%>
+    <%= hidden_field_tag :plaid_id, trans.plaid_id%>
+    <%= hidden_field_tag :user_id, current_user.id%>
+    <%= hidden_field_tag :date, trans.date%>
+  </div>
+  <div>
+    <%= submit_tag "Submit", class: "btn btn-primary block full-width m-b"%>
+  </div>
+</div>
+<%end%>
+<%end%>
