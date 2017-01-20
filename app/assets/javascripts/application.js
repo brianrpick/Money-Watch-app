@@ -11,4 +11,9 @@
 // about supported directives.
 //
 //= require bootstrap-sprockets
+//= require moment 
+//= require fullcalendar
 //= require_tree .
+
+
+$('#calendar').fullCalendar({});

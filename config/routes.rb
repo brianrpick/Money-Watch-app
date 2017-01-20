@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
 
+  get "/calendar", to: "expenses#new"
+
   get "/expenses/:id/calendar", to: "expenses#calendar"
 
   namespace :api do

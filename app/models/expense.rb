@@ -14,4 +14,9 @@
 
 class Expense < ApplicationRecord
   belongs_to :user
+
+  
+  def all_day_expense?
+    self.start == self.start.midnight && self.end == self.end.midnight ? true : false
+  end
 end
