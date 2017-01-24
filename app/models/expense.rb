@@ -14,9 +14,10 @@
 
 class Expense < ApplicationRecord
   belongs_to :user
+  attr_accessor :date_range
 
   
   def all_day_expense?
-    self.start == self.start.midnight && self.end == self.end.midnight ? true : false
+    return true
   end
 end

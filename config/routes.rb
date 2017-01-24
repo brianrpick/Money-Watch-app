@@ -13,9 +13,8 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
 
-  get "/calendar", to: "expenses#new"
-
-  get "/expenses/:id/calendar", to: "expenses#calendar"
+  get "/calendar", to: "expenses#home"
+  patch "/calendar", to: "expenses#update"
 
   namespace :api do
     namespace :v1 do

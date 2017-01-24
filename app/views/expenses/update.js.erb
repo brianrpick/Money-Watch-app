@@ -1,6 +1,6 @@
-$('.calendar').fullCalendar('removeExpenses', [<%= @expense.id %>]);
-$('.calendar').fullCalendar(
-  'renderExpense', 
+$('#calendar-one').fullCalendar('removeEvents', [<%= @expense.id %>]);
+$('#calendar-one').fullCalendar(
+  'renderEvent', 
   $.parseJSON("<%=j render(@expense, format: :json).html_safe %>"), 
   true
 );

@@ -1,0 +1,25 @@
+<%= form_tag "/expenses", method: :post,  remote: true, :class => "form-group" do %>
+  <div class="form-inputs">
+    <%= label_tag :title, "Expense Title:"%><br>
+    <%= text_field_tag :title, @expense.title, class: "form-control input-sm" %><br>
+    <%= label_tag :date_range, "Expense Date(s):"%><br>
+    <%= text_field_tag :date_range, "", class: "form-control input-sm date-range-picker", id:"expense_date_range" %><br>
+    <%= label_tag :amount, "Expense Amount:"%><br>
+    <%= text_field_tag :amount, @expense.amount, class: "form-control input-sm" %><br>
+    <%= hidden_field_tag :start, nil, class: 'form-control input-sm start_hidden' %>
+    <%= hidden_field_tag :end, nil, class: 'form-control input-sm end_hidden' %>
+    <%= hidden_field_tag :user_id, current_user.id %>
+    <%= label_tag :color, "Expense Color:"%>
+    <%= select_tag :color, options_for_select([['Black','black'], ['Green','green'], ['Red','red']]) %>
+  </div>
+
+  <div class="form-actions">
+    <%= submit_tag "Submit", class: "btn btn-primary" %>
+    <%= link_to 'Delete', 
+                @expense, 
+                method: :delete, 
+                class: 'btn btn-danger', 
+                data: { confirm: 'Are you sure?' },
+                remote: true unless @expense.new_record?%>
+  </div>
+<% end %>

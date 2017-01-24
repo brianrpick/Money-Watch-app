@@ -1,6 +1,23 @@
-$('.calendar').fullCalendar(
-  'renderExpense', 
-  $.parseJSON("<%=j render(@expense, format: :json).html_safe %>"),
-  true
-);
+
+// $(document).ready(function() {
+  // console.log("I'm Happening!!!");
+  // var eventObject = {
+  //   id: <%= @expense.id %>
+  //   title: "<%= @expense.title %>",
+  //   allDay: true,
+  //   start: "<%= @expense.start.strftime('%Y-%m-%d') %>",
+  //   end: "<%= @expense.end.strftime('%Y-%m-%d') %>",
+  //   color: "<%= @expense.color %>",
+  //   update_url: "<%= expense_path(@expense, method: :patch) %>",
+  //   edit_url: "<%= edit_expense_path(@expense) %>"
+  // };
+  // console.log(eventObject);
+
+
+$('#calendar-one').fullCalendar(
+  'renderEvent', 
+  $.parseJSON("<%=j render(:partial => 'expense.json.jbuilder', :locals => {expense: @expense}, format: :json).html_safe %>"),
+  true  );
 $('.modal').modal('hide');
+
+// });
