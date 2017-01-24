@@ -17,7 +17,7 @@ initalize_calendar = function() {
 
       select: function(start, end) {
         $.getScript('/expenses/new', function() {
-          $('.expense_date_range').val(moment(start).format("MM/DD/YYYY") + ' - ' + moment(end).format("MM/DD/YYYY")); date_range_picker();
+          $('#expense_date_range').val(moment(start).format("MM/DD/YYYY") + ' - ' + moment(end).format("MM/DD/YYYY")); date_range_picker();
           $('.start_hidden').val(moment(start).format("YYYY-MM-DD"));
           $('.end_hidden').val(moment(end).format('YYYY-MM-DD'));
         });
