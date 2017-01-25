@@ -6,6 +6,7 @@ class ExpensesController < ApplicationController
     # else
     #   @expenses = Expense.where(user_id: current_user.id, start: params[:start]..params[:end])
     # end
+    @total = 0
     @expenses = Expense.where(user_id: current_user.id)
   end
 

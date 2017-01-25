@@ -1,26 +1,34 @@
  <h3>Here are your most recent deductions/purchases:</h3>
-
-<%@positive.each do |trans|%>
-<div class="ibox-content">
-  Location: <%= link_to "#{trans.name}", "/transactions/#{trans.id}/edit" %><br>
-  Amount: <%=number_to_currency(trans.amount)%><br>
-  Date: <%=trans.date%>
-  Category: <%=trans.find_category%>
-  <%@p_total += trans.amount%>
+<div class="container-fluid">
+ <div class="row">
+    <%@positive.each do |trans|%>
+      <div class="col-md-4">
+        <div class="ibox-content">
+          Location: <%= link_to "#{trans.name[0..30].gsub(/\s\w+$/,'...')}", "/transactions/#{trans.id}/edit" %><br>
+          Amount: <%=number_to_currency(trans.amount)%><br>
+          Date: <%=trans.date%>
+        </div>
+      </div>
+    <%end%>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <h3>Here are the most recent credits to your account</h3>
+    <%@negative.each do |trans|%>
+      <div class="col-md-4">
+        <div class="ibox-content">
+            Location: <%=link_to "#{trans.name[0..35].gsub(/\s\w+$/,'...')}", "/transactions/#{trans.id}/edit" %><br>
+            Amount: <%=number_to_currency(trans.amount.abs)%><br>
+            Date: <%=trans.date.strftime("%m-%d-%y")%><br>
+        </div>
+      </div>
+    <%end%>
+  </div>
 </div>
-<%end%>
-<h4>Total of your purchases: <%=number_to_currency(@p_total)%></h4>
-
-<h3>Here are the most recent credits to your account</h3>
-<%@negative.each do |trans|%>
-<div class="ibox-content">
-  Location: <%=link_to "#{trans.name}", "/transactions/#{trans.id}/edit" %>
-  Amount: <%=number_to_currency(trans.amount)%>
-  Date: <%=trans.date.strftime("%m-%d-%y")%><br>
-  <%=@n_total += trans.amount%>
-</div>
-<%end%>
-<h4>Total of your credits: <%=(number_to_currency(@n_total.abs))%></h4>
 </br>
 </br>
 </br>

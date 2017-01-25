@@ -45,6 +45,19 @@ class User < ApplicationRecord
     end
     return amount_totals 
   end
+  def weekly_transactions
+    amount_totals = {}
+    transactions.where(date: Time.now - 1.week..Time.now).each do |trans|
+      if trans.amount > 0
+        if amount_totals[trans.find_category]
+          amount_totals[trans.find_category] += trans.amount
+        else
+          amount_totals[trans.find_category] = trans.amount
+        end
+      end
+    end
+    return amount_totals 
+  end
   def grab_other
     other_trans = []
     transactions.where(category_id: nil). each do |trans|

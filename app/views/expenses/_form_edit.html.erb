@@ -3,7 +3,7 @@
     <%= label_tag :title, "Expense Title:"%><br>
     <%= text_field_tag :title, @expense.title, class: "form-control input-sm" %><br>
     <%= label_tag :date_range, "Expense Date(s):"%><br>
-    <%= text_field_tag :date_range, "", class: "form-control input-sm date-range-picker" %><br>
+    <%= text_field_tag :date_range, "", class: "form-control input-sm date-range-picker", id:"expense_date_range" %><br>
     <%= label_tag :amount, "Expense Amount:"%><br>
     <%= text_field_tag :amount, @expense.amount, class: "form-control input-sm" %><br>
     <%= hidden_field_tag :start, nil, class: 'form-control input-sm start_hidden' %>

@@ -1,0 +1,28 @@
+<h1> Edit Expense</h1>
+<div class="ibox-content">
+<%= form_tag "/expenses/#{@expense.id}", method: :patch, :class => "form-group" do %>
+  <div>
+    <%= label_tag :title, "Title"%>:
+    <%= text_field_tag :title, @expense.title%>
+  </div>
+  <div>
+    <%= label_tag :amount, "Amount"%>:
+    <%= text_field_tag :amount, @expense.amount%>
+  </div>
+
+  <div>
+    <%= hidden_field_tag :user_id, @user_id%>
+    <%= hidden_field_tag :start, @expense.start%>
+    <%= hidden_field_tag :end, @expense.end%>
+  </div>
+  <div>
+    <%= submit_tag "Submit", class: "btn btn-primary"%>
+    <%= link_to 'Delete', 
+                @expense, 
+                method: :delete, 
+                class: 'btn btn-danger', 
+                data: { confirm: 'Are you sure?' },
+                remote: true%>
+  </div>
+</div>
+<%end%>

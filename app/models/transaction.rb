@@ -15,8 +15,14 @@ class Transaction < ApplicationRecord
 
   def monthly_spending
     user = current_user
-    monthly_trans = @user.transactions.where(date: Time.now - 1.week..Date.today)
+    monthly_trans = @user.transactions.where(date: Time.now - 1.month..Date.today)
     monthly_trans.each do |trans|
+    end
+  end
+  def weekly_spending
+    user = current_user
+    weekly_trans = @user.transactions.where(date: Time.now - 1.week..Date.today)
+    weekly_trans.each do |trans|
     end
   end
 

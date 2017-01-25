@@ -133,9 +133,32 @@ class TransactionsController < ApplicationController
 
     gon.categories = current_user.categorize_transactions
     gon.category_totals = current_user.total_transactions
+    gon.w_totals = current_user.weekly_transactions
   end
   def other
     @transactions = current_user.grab_other 
+  end
+  def find_category
+    categories = {
+      "10" => "Bank Fees",
+      "11" => "Cash Advance",
+      "12" => "Community",
+      "13" => "Food and Drink",
+      "14" => "Healthcare",
+      "15" => "Interest",
+      "16" => "Payment",
+      "17" => "Recreation",
+      "18" => "Service",
+      "19" => "Shops",
+      "20" => "Tax",
+      "21" => "Transfer",
+      "22" => "Travel"
+     }
+    if category_id
+      return categories[category_id.to_s[0..1]]
+    else
+      return "Other"
+    end
   end
 end
 

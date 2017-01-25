@@ -35,6 +35,7 @@
               }]
           }
         });
+        // monthly graph
         var doughnutData = {labels: ["Bank Fees", "Cash Advance", "Community", "Food and Drink", "Healthcare", "Interest", "Payments","Recreation", "Services", "Shops", "Tax", "Transfers", "Travel", "Other"],
         datasets: [{
             data: [gon.category_totals['Bank Fees'], gon.category_totals["Cash Advance"], gon.category_totals["Community"], gon.category_totals["Food and Drink"], gon.category_totals["Healthcare"], gon.category_totals["Interest"], gon.category_totals["Payments"], gon.category_totals["Recreation"], gon.category_totals["Service"], gon.category_totals["Shops"], gon.category_totals["Tax"], gon.category_totals["Transfer"], gon.category_totals["Travel"], gon.category_totals["Other"]],
@@ -47,12 +48,49 @@
         responsive: true
         };
 
+
+
         // total_transactions
         var ctx4 = document.getElementById("doughnutChart").getContext("2d");
         new Chart(ctx4, {type: 'doughnut', data: doughnutData, options:doughnutOptions});
+        
+        // weekly graph
+
+        var doughnutDataTwo = {labels: ["Bank Fees", "Cash Advance", "Community", "Food and Drink", "Healthcare", "Interest", "Payments","Recreation", "Services", "Shops", "Tax", "Transfers", "Travel", "Other"],
+        datasets: [{
+            data: [gon.w_totals['Bank Fees'], gon.w_totals["Cash Advance"], gon.w_totals["Community"], gon.w_totals["Food and Drink"], gon.w_totals["Healthcare"], gon.w_totals["Interest"], gon.w_totals["Payments"], gon.w_totals["Recreation"], gon.w_totals["Service"], gon.w_totals["Shops"], gon.w_totals["Tax"], gon.w_totals["Transfer"], gon.w_totals["Travel"], gon.w_totals["Other"]],
+            backgroundColor: ["#a3e1d4", "#dedede", "#b5b8cf","#a3e1d4", "#dedede", "#b5b8cf","#a3e1d4", "#dedede", "#b5b8cf","#a3e1d4", "#dedede", "#b5b8cf", "#a3e1d4"]
+        }]
+        } ;
+
+
+        var doughnutOptionsTwo = {
+        responsive: true
+        };
+
+
+
+        // total_transactions
+        var ctx5 = document.getElementById("doughnutChart-two").getContext("2d");
+        new Chart(ctx5, {type: 'doughnut', data: doughnutDataTwo, options:doughnutOptionsTwo});
+
+
+
     });
 </script>
 <div class="wrapper wrapper-content animated fadeInRight">
+      <div class="col-lg-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Here is where you spent your money this week. </h5>
+            </div>
+            <div class="ibox-content">
+                <div>
+                    <canvas id="doughnutChart-two" height="140"></canvas>
+                </div>
+            </div>
+        </div>
+      </div>
     <div class="col-lg-6">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
@@ -65,7 +103,9 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-6">
+
+  <div class="row">
+    <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
                 <h5>We broke down the money you spent in the past year.</h5>
@@ -77,7 +117,9 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-6">
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
                 <h5>Here are your spending habits from the past year</h5>
@@ -89,6 +131,7 @@
             </div>
         </div>
     </div>
+  </div>
 </div>
 
 

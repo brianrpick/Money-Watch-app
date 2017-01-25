@@ -26,12 +26,12 @@
         <div class="sidebar-collapse">
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
-                    <div class="dropdown profile-element"> <span>
+                    <div> <span>
                     <p>MW</p>
                         <!-- <img alt="image" class="img-circle" src="MW" />-->
                         <!-- https://mccallwilliamsfitness.files.wordpress.com/2016/05/logo.png -->
                             
-                             </span>
+                        </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"></strong>
                              </span> <span class="text-muted text-xs block"><%=@current_user.first_name%> <%=@current_user.last_name%> <b class="caret"></b></span> </span> </a>
@@ -47,23 +47,28 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-home"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+                    <a href="/home"><i class="fa fa-home"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="/home">Home</a></li>
-                        <li><a href="/transactions">All Transactions</a></li>
+                        <li><a href="/home"><i class="fa fa-area-chart"></i>Home</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="/expenses"><i class="fa fa-money"></i> <span class="nav-label">Layouts</span></a>
+                    <a href="/transactions"><i class="fa fa-bank"></i> <span class="nav-label">Bank Transactions</span></a>
                 </li>
                 <li>
-                    <a href="/calendar"><i class="fa fa-calendar"></i> <span class="nav-label">Expense Calendar</span>  <span class="pull-right label label-primary">Help Us</span></a>
+                    <a href="/expenses"><i class="fa fa-money"></i> <span class="nav-label">Expenses</span></a>
+                </li>
+                <li>
+                    <a href="/calendar"><i class="fa fa-calendar"></i> <span class="nav-label">Expense Calendar</span></a>
                 </li>
                 <%if current_user.grab_other != nil%>
                     <li>
-                        <a href="/other"><i class="fa fa-check"></i> <span class="nav-label">Update Categories</span>  <span class="pull-right label label-primary">Help Us!</span></a>
+                        <a href="/other"><i class="fa fa-check-square-o"></i> <span class="nav-label">Update Categories</span>  <span class="pull-right label label-primary">Help Us!</span></a>
                     </li>
                 <%end%>
+                <li>
+                    <a href="/settings"><i class="fa fa-cogs"></i> <span class="nav-label">Settings</span></a>
+                </li>
             </ul>
 
         </div>
@@ -77,7 +82,7 @@
                
             </div>
             <ul class="nav navbar-top-links navbar-right">
-            
+            =
 
                 <li>
                     <a href="/logout">

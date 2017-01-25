@@ -1,0 +1,16 @@
+ <h3>Here are your expenses!</h3>
+
+<%@expenses.each do |exp|%>
+<div class="col-lg-12">
+  <div class="ibox-content">
+    Location: <%= link_to "#{exp.title}", "/expenses/#{exp.id}/edit" %><br>  
+    Amount: <%=number_to_currency(exp.amount)%><br>
+    Date: <%=exp.start.strftime('%Y-%m-%d')%> - <%=exp.end.strftime('%Y-%m-%d')%>
+    <%@total += exp.amount%>
+  </div>
+</div>
+<%end%>
+<br>
+<br>
+<h3>Total of your expenses: <%=number_to_currency(@total)%></h3>
+

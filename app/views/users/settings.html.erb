@@ -46,11 +46,12 @@ document.getElementById('plaidLinkButton').onclick = function() {
     <%= label_tag :savings_goal, "Savings Goal: "%>
     <%= text_field_tag :savings_goal, @user.savings_goal%>
   </div>
+  <div>
     <%= label_tag :expense_budget, "Expense Budget: "%>
     <%= text_field_tag :expense_budget, @user.expense_budget%>
   </div>
   <div>
-    <%= submit_tag "Submit", class: "btn btn-primary block full-width m-b"%>
+    <%= submit_tag "Submit", class: "btn btn-primary"%>
   </div>
 </div>
 <%end%>
