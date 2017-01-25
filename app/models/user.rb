@@ -18,8 +18,8 @@ class User < ApplicationRecord
   has_many :transactions
   has_many :expenses
   
-  # validates :email, uniqueness: true
-  # validates :first_name, :last_name, presence: { message: "must be given please" }
+  validates :email, uniqueness: true
+  validates :first_name, :last_name, presence: { message: "must be given please" }
   def categorize_transactions
     category_totals = {}
     transactions.where(date: Date.new(2016)..Date.new(2017)).each do |trans|
