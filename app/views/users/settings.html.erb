@@ -1,6 +1,6 @@
 <h2>Welcome, <%=@user.first_name%>! </h2><form id="some-id" method="POST" action="/authenticate" ></form>
 <%if !@user.added_plaid%>
-<button id="plaidLinkButton">Open Plaid Link</button>
+<button id="plaidLinkButton" class: "btn btn-primary">Open Plaid Link</button>
 
 <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
 <script>
