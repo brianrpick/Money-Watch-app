@@ -23,15 +23,14 @@
 #   cat = Faker::Commerce.department
 #   Transaction.create(user_id: user_id, location: location, ammount: ammt, date: date, category: cat)
 # end
-
-10.times do |exp|
-  user_id = rand(1..100)
-  type = "bill"
-  desc = Faker::Commerce.product_name
-  date = Faker::Date.forward(23)
-  amt = Faker::Commerce.price
-  Expense.create(user_id: 1, exp_type: type, amount: amt, date: date, description: desc)
-end
+# date 
+# 10.times do |exp|
+#   title =
+#   desc = Faker::Commerce.product_name
+#   date = Faker::Date.forward(23)
+#   amt = Faker::Commerce.price
+#   Expense.create(user_id: 2, title: title, amount: amt, date: date, description: desc)
+# end
 
 # Category.create([
 #   {name: "Bank Fees"},
