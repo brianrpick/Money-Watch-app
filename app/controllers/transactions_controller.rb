@@ -52,8 +52,8 @@ class TransactionsController < ApplicationController
                                    plaid_id: @transaction.plaid_id)
     if @transaction.save
       flash[:success] = 'Transaction Successfully Updated'
-      if current_user.grab_other == nil
-        redirect_to '/transactions'
+      if current_user.grab_other.empty?
+        redirect_to '/home'
       else
         redirect_to '/other'    
       end

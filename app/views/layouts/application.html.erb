@@ -60,7 +60,7 @@
                 <li>
                     <a href="/calendar"><i class="fa fa-calendar"></i> <span class="nav-label">Expense Calendar</span></a>
                 </li>
-                <%if current_user.grab_other != nil%>
+                <%if !current_user.grab_other.empty? %>
                     <li>
                         <a href="/other"><i class="fa fa-check-square-o"></i> <span class="nav-label">Update Categories</span>  <span class="pull-right label label-primary">Help Us!</span></a>
                     </li>
