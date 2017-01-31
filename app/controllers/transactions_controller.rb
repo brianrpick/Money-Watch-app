@@ -39,7 +39,7 @@ class TransactionsController < ApplicationController
 
 
   def edit
-    @transaction = Transaction.find_by(params[:plaid_id])
+    @transaction = Transaction.find_by(params[:id])
   end
 
   def update
